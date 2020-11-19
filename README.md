@@ -17,7 +17,7 @@
 各運営部が審判員や設営に人手がもう少し欲しいとなった場合に募集をかけて、それに対してスキルを持った登録者が連絡をとって参加するといった利用を想定しています。
 
 ### 機能一覧
-<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
+https://docs.google.com/spreadsheets/d/1vaq1c2lwuu7rEgO31mXYvDImrEDKNDPfIU6K5SvQaI0/edit#gid
 
 ## 開発環境
 - OS：Linux(CentOS)

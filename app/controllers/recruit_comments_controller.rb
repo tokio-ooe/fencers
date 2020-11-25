@@ -1,0 +1,2 @@
+class RecruitCommentsController < ApplicationController
+end

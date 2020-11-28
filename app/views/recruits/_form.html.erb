@@ -1,0 +1,32 @@
+<%= form_with model:recruit,local:true do |f| %>
+  <div class="field row">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'col-xs-12 recruit_title' %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :opinion %>
+    <%= f.text_area :body, class: 'col-xs-12 recruit_body'%>
+  </div>
+
+  <div class="field row">
+    <%= f.label :position %>
+    <%= f.text_field :position, class: 'col-xs-12 recruit_title' %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :reward %>
+    <%= f.text_field :reward, class: 'col-xs-12 recruit_reward' %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :opinion %>
+    <%= f.text_area :body, class: 'col-xs-12 recruit_body'%>
+  </div>
+
+  <br>
+
+  <div class="actions row">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>

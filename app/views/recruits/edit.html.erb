@@ -1,1 +1,38 @@
-<h1>recruit edit</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3">
+			<% if @recruit.errors.any? %>
+				<div>
+					<h3 style="color: red"><%= pluralize(@recruit.errors.count, "error") %> prohibited this obj from being saved:</h3>
+					<ul>
+						<% @recruit.errors.full_messages.each do|message| %>
+						<li style="color: red"><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<h1>Editing Recruit</h1>
+			<%= form_for(@recruit) do |f| %>
+				<div class="field">
+					<%= f.label :title %><br>
+					<%= f.text_field :title, size:"74" %>
+				</div>
+				<div class="field">
+					<%= f.label :reward %>
+					<%= f.text_field :reward, class: 'col-xs-12 recruit_reward' %>
+  			</div>
+  			<div class="field">
+    			<%= f.label :position %>
+    			<%= f.text_field :position, class: 'col-xs-12 recruit_title' %>
+    			</div>
+				<div class="field">
+					<%= f.label :opinion %><br>
+					<%= f.text_area :body, size:"76" %>
+				</div>
+				<%= f.submit "Update Recruit", class:"btn btn-block btn-primary" %>
+			<% end %>
+			<%= link_to "Show", recruit_path(@recruit.id) %>
+			<%= link_to "Back", recruits_path %>
+		</div>
+	</div>
+</div>

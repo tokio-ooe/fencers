@@ -1,0 +1,21 @@
+<table id="recruit_comments_<%= recruit.id %>">
+  <% recruit.recruit_comments.each do |recruit_comment| %>
+    <% recruit_comment_user = recruit_comment.user %>
+    <tr>
+    	<td>
+    		<%= link_to user_path(recruit_comment_user), class: "user_#{recruit_comment_user.id}" do %>
+      		<%= attachment_image_tag recruit_comment_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+      		<%= recruit_comment_user.name %>
+    		<% end %>
+    	</td>
+    	<td><%= recruit_comment.comment %></td>
+    	<% if current_user == recruit_comment_user %>
+      	<td><%= link_to 'Destroy', recruit_recruit_comment_path(recruit_comment.recruit_id, recruit_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+    	<% end %>
+    </tr>
+  <% end %>
+</table>
+<%= form_with model:[recruit,recruit_comment], remote: true do |f| %>
+  <%= f.text_area :comment, size:"90x5" %>
+  <%= f.submit '送信'%>
+<% end %>

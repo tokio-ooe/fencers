@@ -1,1 +1,17 @@
-<h1>recruit index</h1>
+<%= render 'layouts/errors', obj: @recruit %>
+
+<div class='row'>
+  <div class='col-xs-3'>
+    <h2>User info</h2>
+    <%= render 'users/info', user: current_user %>
+
+    <h2>募集</h2>
+    <%= render 'form', recruit: @recruit %>
+  </div>
+
+  <div class='col-xs-8'>
+    <h2>募集一覧</h2>
+
+    <%= render 'index', recruits: @recruits %>
+  </div>
+</div>

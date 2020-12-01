@@ -1,40 +1,37 @@
-<div class='row'>
-  <div class='col-xs-3'>
-    <h2>User info</h2>
-    <%= render 'users/info', user: @recruit.user %>
-    <h2>New book</h2>
-    <%= render 'form', recruit: Recruit.new %>
+<div class="container-fluid">
+  <h2>記事詳細</h2>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 text-center">
+      <div class="show-title">
+        <h3>タイトル ： <%= @recruit.title %></h3>
+        <p> 投稿者 ：   <%= link_to user_path(@recruit.user) do %>
+        <%= attachment_image_tag(@recruit.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+            <%= @recruit.user.name %></p>
+            <% end %>
+        <p> 投稿日 ： <%= @recruit.created_at %></p>
+      </div>
+      <!--いいね数-->
+      <div id="favorite-count">
+        <p><%= render "favorites/favorite-btn", recruit: @recruit %> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></p>
+      </div>
+    </div>
   </div>
+</div>
 
-
-  <div class='col-xs-9'>
-		<h2>Recruit detail</h2>
-		<table class='table'>
-		  <thead>
-		  <tr>
-        <td><%= link_to user_path(@recruit.user) do %>
-          <%= attachment_image_tag(@recruit.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
-          <%= @recruit.user.name %>
-          <% end %>
-        </td>
-        <td><%= link_to @recruit.title, recruit_path(@recruit) %></td>
-        <td><%= @recruit.body %></td>
-        <td class="favorite-btn"><%= render "favorites/favorite-btn", recruit: @recruit %></td>
-        <td>コメント数: <%= @recruit.recruit_comments.count %></td>
-        <br>
-        <td>会場：場所<%= @recruit.position %></td>
-        <td>謝礼金：<%= @recruit.reward %>　円</td>
-
-        <% if @recruit.user == current_user %>
-          <td><%= link_to 'Edit', edit_recruit_path(@recruit), class: "btn-sm btn-success edit_recruit_path_#{@recruit.id}" %></td>
-          <td><%= link_to 'Destroy', recruit_path(@recruit), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_recuit_#{@recruit.id}"%></td>
-        <% end %>
-      </tr>
-      </thead>
-
-
-      <%= render "recruits/recruit_comment", recruit: @recruit, recruit_comment: @recruit_comment %>
-
-
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h3>概要</h3>
+    <p><%= @recruit.body %></p>
+    <h3>会場：場所</h3>
+    <p><%= @recruit.position %></p>
+    <h3>謝礼</h3>
+    <p><%= @recruit.reward %>　円</p>
+    <br>
+    <h3>コメント <%= @recruit.recruit_comments.count %>件</h3>
+    <%= render "recruits/recruit_comment", recruit: @recruit, recruit_comment: @recruit_comment %>
+     <% if @recruit.user == current_user %>-->
+        <p><%= link_to 'Edit', edit_recruit_path(@recruit), class: "btn-sm btn-success edit_recruit_path_#{@recruit.id}" %></p>
+        <p><%= link_to 'Destroy', recruit_path(@recruit), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_recuit_#{@recruit.id}"%></p>
+     <% end %>
   </div>
 </div>

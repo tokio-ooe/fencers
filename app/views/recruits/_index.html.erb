@@ -1,43 +1,26 @@
-<!--<table class='table table-hover table-inverse'>-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th></th>-->
-<!--      <th>Title</th>-->
-<!--      <th>Opinion</th>-->
-<!--      <th colspan="3"></th>-->
-<!--    </tr>-->
-<!--  </thead>-->
 
-<!--  <tbody>-->
-<!--    <#% recruits.each do |recruit| %>-->
-<!--      <tr>-->
-<!--        <td><%#= link_to user_path(recruit.user) do %>-->
-          <%#= attachment_image_tag(recruit.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-<!--          <#% end %>-->
-<!--        </td>-->
-<!--        <td><%#= link_to recruit.title, recruit_path(recruit), class: "recruit_#{recruit.id}" %></td>-->
-<!--        <td><%#= recruit.body %></td>-->
-        <!--<td class="favorite-btn" id="favorite-btn_<%#= recruit.id %>"><%#= render "favorites/favorite-btn", recruit: recruit %></td>-->
-        <!--<td>コメント数: <%#= recruit.recruit_comments.count %></td>-->
-<!--      </tr>-->
-<!--    <#% end %>-->
-<!--  </tbody>-->
-<!--</table>-->
-
-<div class="continer">
-<div class="title">
+  <table class="table table-hover table-light">
   <% recruits.each do |recruit| %>
-    <b><%= link_to recruit.title, recruit_path(recruit), class: "recruit_#{recruit.id}" %></b>
-    <br>
-    <b><%= recruit.body %></b>
-    <br>
-    <b>場所<%= recruit.position %></b>
-    <br>
-    <b>報酬<%= recruit.reward %>　円</b>
-    <br>
-    <td>コメント数: <%= recruit.recruit_comments.count %></td>
-    <br>
-    <td class="favorite-btn" id="favorite-btn_<%= recruit.id %>"><%= render "favorites/favorite-btn", recruit: recruit %></td>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th></th>
+        <th><colspan="3"></colspan></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to recruit.title, recruit_path(recruit), class: "recruit_#{recruit.id}" %></td>
+        <td><%#= recruit.body %></td>
+        <td>場所<%= recruit.position %></td>
+        <td>報酬 <%= recruit.reward %>円</td>
+        <!--<td>コメント数: <%#= recruit.recruit_comments.count %></td>-->
+        <td class="favorite-btn" id="favorite-btn_<%= recruit.id %>"><%= render "favorites/favorite-btn", recruit: recruit %></td>
   <% end %>
-</div>
-</div>
+      </tr>
+    </tbody>
+  </table>

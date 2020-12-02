@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image, :belong, :capacity,)
+    params.require(:user).permit(:name, :introduction, :profile_image, :belong, :capacity_status)
   end
 
   def ensure_correct_user

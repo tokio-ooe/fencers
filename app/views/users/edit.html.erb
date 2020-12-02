@@ -3,32 +3,31 @@
 <%= form_with model:@user do |f| %>
   <%= render 'layouts/errors', obj: @user %>
 
-  <div class="field">
+  <div class="field row">
     <%= f.label :name %>
-    <%= f.text_field :name, class: "name" %>
+    <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"" %>
   </div>
 
-  <div class="field">
+  <div class="field row">
     <%= f.label :image %>
-    <%= f.attachment_field :profile_image, class: "user_image" %>
+    <%= f.attachment_field :profile_image %>
   </div>
 
-  <div class="field">
+  <div class="fiel row">
     <%= f.label :プロフィール %>
-    <%= f.text_area :introduction, class: "introduction" %>
+    <%= f.text_area :introduction, autofocus: true, class:"form-control", id:"inputName", placeholder:"" %>
   </div>
 
-  <div class="field">
+  <div class="field row">
     <%= f.label :所属 %>
-    <%= f.text_field :belong, class: "belong" %>
+    <%= f.text_field :belong, autofocus: true, class:"form-control", id:"inputName", placeholder:"" %>
   </div>
 
-  <div class="field">
-    <%= f.label :資格 %>
-    <%= f.text_field :capacity, class: "capacity" %>
+  <div class="field row">
+    <%= f.label :ライセンス, class:"col-sm-3" %>
+    <%= f.select :capacity_status, User.capacity_statuses.keys, :value => [] , class:"form control", id:"number", name:"number" %>
   </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
   </div>
 <% end %>

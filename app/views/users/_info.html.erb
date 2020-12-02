@@ -13,11 +13,13 @@
     <th><%= user.belong %></th>
   </tr>
   <tr>
-    <th>資格</th>
-    <th><%= user.capacity %></th>
+  <th>資格</th>
+  <th><%= @user.capacity_status %></th>
   </tr>
 </table>
 
 <div class='row'>
   <%= link_to '', edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
 </div>
+
+

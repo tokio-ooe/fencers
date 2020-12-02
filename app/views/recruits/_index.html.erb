@@ -2,16 +2,16 @@
   <table class="table table-hover table-light">
   <% recruits.each do |recruit| %>
     <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th></th>
-        <th><colspan="3"></colspan></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+    <!--  <tr>-->
+    <!--    <th></th>-->
+    <!--    <th>Title</th>-->
+    <!--    <th></th>-->
+    <!--    <th><colspan="3"></colspan></th>-->
+    <!--    <th></th>-->
+    <!--    <th></th>-->
+    <!--    <th></th>-->
+    <!--  </tr>-->
+    <!--</thead>-->
     <tbody>
       <tr>
         <td><%= link_to recruit.title, recruit_path(recruit), class: "recruit_#{recruit.id}" %></td>

@@ -27,11 +27,11 @@
     <h3>謝礼</h3>
     <p><%= @recruit.reward %>　円</p>
     <br>
+         <% if @recruit.user == current_user %>
+        <i><%= link_to '編集', edit_recruit_path(@recruit), class: "btn-sm btn-success edit_recruit_path_#{@recruit.id}" %></i>
+        <i><%= link_to '消去', recruit_path(@recruit), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_recuit_#{@recruit.id}"%></i>
+     <% end %>
     <h3>コメント <%= @recruit.recruit_comments.count %>件</h3>
     <%= render "recruits/recruit_comment", recruit: @recruit, recruit_comment: @recruit_comment %>
-     <% if @recruit.user == current_user %>-->
-        <p><%= link_to 'Edit', edit_recruit_path(@recruit), class: "btn-sm btn-success edit_recruit_path_#{@recruit.id}" %></p>
-        <p><%= link_to 'Destroy', recruit_path(@recruit), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_recuit_#{@recruit.id}"%></p>
-     <% end %>
   </div>
 </div>

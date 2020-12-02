@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show, :edit, :update]
   resources :messages, only: [:create, :destroy]
+  resources :notifications, only: [:index, :destroy]
 end

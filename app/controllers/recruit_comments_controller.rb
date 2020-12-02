@@ -7,8 +7,10 @@ class RecruitCommentsController < ApplicationController
 		@recruit_comment.recruit_id = @recruit.id
 		@recruit_comment.user_id = current_user.id
 		if @recruit_comment.save
-  		redirect_to request.referer
-  		# render 'recruit/index'
+		  @recruit=@recruit_comment.recruit
+          @recruit.create_notification_recruit_comment!(current_user, @recruit_comment.id)
+  		  redirect_to request.referer
+  		 # render 'recruit/index'
 		else
 		  render 'recruits/show'
 		end

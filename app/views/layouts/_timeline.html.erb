@@ -1,0 +1,70 @@
+<% recruits.each do |recruit| %>
+	<div class="row justify-content-center" >
+		<div class="col-md-6 my-3 box"style="border:solid 1px #DAA25A;height:40%;background-color:#FFFFF0;">
+			<div class="row justify-content-center"style="height:50px;background-color:rgba(218,162,90,0.5)">
+				<div class="col-2 mt-1" >
+	      	<%= link_to user_path(recruit.user) do %>
+	      	<%= attachment_image_tag recruit.user, :profile_image, format: 'jpeg'  ,class:"img-fluid rounded-circle" ,fallback: "no_image.jpg",size: "40x40" %><% end %></div>
+	      	<div class="col-6 pl-0 align-self-center text-left ">
+	      		<%= link_to user_path(recruit.user), class: "text-black" do %>
+	      		<%= recruit.user.name %><% end %></div>
+	      	<div class="col-md-4 align-self-center text-right">	<%= recruit.created_at.strftime('%Y/%m/%d') %></div>
+			</div>
+			
+			<div class="col-md-6 ">
+	    	<div class="row my-2 border-bottom">
+	    	<!-- ライブについて -->
+					<div class="col-2 ">
+						<p><i class="fas fa-music"></i></p>
+					</div>
+				<div class="col-10 ">
+					<p ><%= recruit.title %></p>
+				</div>
+				<div class="col-2">
+				<p><i class="fas fa-compact-disc"></i></p>
+				</div>
+				<div class="col-10">
+					<p><%= recruit.position %></p>
+				</div>
+				<div class="col-2">
+					<p><i class="fas fa-map"></i></p>
+				</div>
+				<div class="col-10">
+					<p> <%= recruit.reward %>円</p>
+				</div>
+				<div class="col-2">
+					<p><i class="fas fa-book"></i></p>
+				</div>
+				<div class="col-10">
+					<p><%= recruit.body %></p>
+				</div>
+				</div>
+				<!--コメント -->
+				<div class="row mt-2">
+					<div class="col">
+						<p><i class="fas fa-comments"></i>
+							<%= recruit.recruit_comments.count %>件
+						</p>
+					</div>
+							<!-- いいね -->
+					<div id="favorite_buttons_<%#= diary.id %>" class="col">
+          	<%= render"favorites/favorite-btn", recruit: recruit %>
+          </div>
+				</div>
+
+				 <!--diary showのボタン -->
+				<div class="row my-3">
+					<div class="col-12 text-center " >
+						<%= link_to "詳細", recruit_path(recruit),class: "btn btn-dark btn-sm" %>
+					</div>
+				</div>
+				
+
+
+		</div>
+		</div>
+	</div>
+<% end %>
+
+
+<!-- kaminari -->

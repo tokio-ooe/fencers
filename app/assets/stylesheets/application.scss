@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
+ @import "notifications";
 
  // #container {
 //   display: flex;
@@ -32,6 +33,90 @@
 //   width: ;
 // }
 
-body{
- margin: 100px;
+
+
+body {
+	font-family: 'Noto Sans JP', sans-serif;
+  }
+
+
+.container-fluid{
+width:100%
+}
+
+.wrap {
+    position: relative;
+    height: auto !important; /*IE6対策*/
+    height: 100%; /*IE6対策*/
+    min-height: 100%;
+    padding-bottom: 60px;
+}
+
+.sidebar{
+  height:100vh;
+  position:-webkit-sticky;
+  position:sticky;
+  top:0;
+}
+
+.sidebar li{
+  padding:10px 0px;
+  font-size:30px;
+  color:#DAA25A;
+  text-shadow: 0px 5px 3px #555;
+}
+
+li:hover{
+  background-color: #696969;
+  transiton: 1.0s;/*1.0秒かける*/
+}
+
+
+.background{
+  background-image: image-url("library.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+footer {
+width: 100%;
+height: 60px;
+background-color: #f5f5f5;
+bottom: 0;
+left: 0;
+position: absolute;
+bottom: 0;
+}
+
+
+.copy_right{
+  margin-top:20px;
+  position: absolute;
+  left:100px;
+}
+
+
+.top-text{
+  color:white;
+  text-shadow: 0px 5px 4px #DAA25A;
+}
+
+
+
+.rounded-circle{
+    width:40px;
+    height:40px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+}
+
+
+.answer {
+  font-size: 12px;
+  padding: 5px 0px;
+  margin-bottom: 15px;
+  display: none;
 }

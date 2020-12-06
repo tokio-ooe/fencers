@@ -4,11 +4,16 @@ class RecruitsController < ApplicationController
 
   def show
     @recruit = Recruit.find(params[:id])
+    @recruits = Recruit.all
     @recruit_comment = RecruitComment.new
   end
 
   def index
     @recruits = Recruit.all
+    @recruit = Recruit.new
+  end
+  
+  def new
     @recruit = Recruit.new
   end
 

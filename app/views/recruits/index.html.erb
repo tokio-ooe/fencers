@@ -1,17 +1,10 @@
-<%= render 'layouts/errors', obj: @recruit %>
-
-<div class='row'>
-  <div class='col-xs-9'>
-    <!--<h2>User info</h2>-->
-    <!--<%#= render 'users/info', user: current_user %>-->
-
-  <!--  <h2>募集</h2>-->
-  <!--  <%#= render 'form', recruit: @recruit %>-->
-  <!--</div>-->
-
-  <div class='col-xs-9'>
-    <h2>募集一覧</h2>
-
-    <%= render 'index', recruits: @recruits %>
-  </div>
+<div class="row">
+  <%= render 'layouts/errors', obj: @recruit %>
+    <%= render'layouts/sidebar' %>
+    <div class="text-center">
+      <h2>募集一覧</h2>
+      <!--<%#= render 'index', recruits: @recruits %>-->
+      <%= render'layouts/timeline', recruits: @recruits %>
+    </div>
 </div>
+

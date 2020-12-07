@@ -5,6 +5,7 @@ class RecruitsController < ApplicationController
   def show
     @recruit = Recruit.find(params[:id])
     @recruits = Recruit.all
+    @user = @recruit.user
     @recruit_comment = RecruitComment.new
   end
 
@@ -49,6 +50,10 @@ class RecruitsController < ApplicationController
     @recruit = Recruit.find(params[:id])
     @recruit.destroy
     redirect_to recruits_path
+  end
+  
+  def following
+    @recruits = @recruit.where(user_id:current_user.following_user.ids)
   end
 
   private

@@ -1,3 +1,11 @@
+<div class="row">
+  <%= render'layouts/sidebar' %>
+  <div class="col-10 background px-0">
+    <div class="text-center">
+      <div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+        <h1 class="top-text">通知</h1>
+      </div>
+    </div>
 <h3 class="text-center">通知</h3>
     <%= link_to "通知削除", notification_path(@notifications), method: :delete ,class: "fas fa-trash" %>
     <% if @notifications.exists? %>
@@ -7,3 +15,5 @@
 <% else %>
     <p>通知はありません</p>
 <% end %>
+</div>
+</div>

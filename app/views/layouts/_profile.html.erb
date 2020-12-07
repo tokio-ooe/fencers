@@ -1,0 +1,23 @@
+<div class="row justify-content-center" >
+	<!-- user情報 -->
+	<div class="col-6 my-3 p-1"style="border:solid 1px #DAA25A;;background-color:#FFFFF0;">
+		<div class="row">
+	      <div class="col-6 mt-1 mx-1">
+	      	<%= attachment_image_tag users, :profile_image, format: 'jpeg'  ,class:"img-fluid rounded-circle" ,fallback: "no_image.jpg",size: "60x60"%>
+	     		<%= users.name %>
+	     	</div>
+	      	<!-- ログインが自分か他人か -->
+	      <% if users==current_user %>
+	      	<div class="col-4 my-auto"><%= link_to "プロフィール編集", edit_user_path(users)%></div>
+	      <% else %>
+	      <div class="col-4 my-auto" id="follow_buttons_<%= user.id %>">
+          <% if current_user.following?(user) %>
+            <%= link_to 'フォロー外す', relationships_path(user.id), method: :delete,class: "btn btn-outline-warning btn-sm"%>
+          <% else %>
+            <%= link_to 'フォローする', relationships_path(user.id), method: :post,class: "btn btn-outline-primary btn-sm" %>
+          <% end %>
+	     </div>
+	      <% end %>
+	  </div>
+	</div>
+</div>

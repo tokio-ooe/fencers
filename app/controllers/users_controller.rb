@@ -31,6 +31,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :belong, :capacity_status)
   end
+  
+  def follow
+    @user = User.find(params[:id])
+  end
+  def follower
+    @user = User.find(params[:id])
+  end
 
   def ensure_correct_user
     @user = User.find(params[:id])

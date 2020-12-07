@@ -1,37 +1,155 @@
-<div class="container-fluid">
-  <h2>記事詳細</h2>
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 text-center">
-      <div class="show-title">
-        <h3>タイトル ： <%= @recruit.title %></h3>
-        <p> 投稿者 ：   <%= link_to user_path(@recruit.user) do %>
-        <%= attachment_image_tag(@recruit.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-            <%= @recruit.user.name %></p>
-            <% end %>
-        <p> 投稿日 ： <%= @recruit.created_at %></p>
-      </div>
-      <!--いいね数-->
-      <div id="favorite-count">
-        <p><%= render "favorites/favorite-btn", recruit: @recruit %> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></p>
+<div class="row">
+  <%= render'layouts/sidebar' %>
+  <div class="col-10 background px-0">
+    <div class="text-center">
+      <div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+        <h1 class="top-text">要請詳細</h1>
       </div>
     </div>
+  <%= render'layouts/profile',users:@user, user:@user, recruit:@recruit %>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="row mt-3">
+        <div class=col>
+          <div class="card">
+            <div class="card-header">
+              <h3><%= @recruit.title %></h3>
+            </div>
+            <div class="card-body">
+               投稿者 ：   <%= link_to user_path(@recruit.user) do %>
+          <%= attachment_image_tag(@recruit.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+              <%= @recruit.user.name %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class=col>
+          <div class="card">
+            <div class="card-header">
+              <h3>日付</h3>
+            </div>
+            <div class="card-body">
+              <%#= @diary.date.strftime('%Y/%m/%d')  %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class=col>
+          <div class="card">
+            <div class="card-header">
+              <h3>会場</h3>
+            </div>
+            <div class="card-body">
+              <%= @recruit.position %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class=col>
+          <div class="card">
+            <div class="card-header">
+              <h3>謝礼</h3>
+            </div>
+            <div class="card-body">
+              <%= @recruit.reward %> 円
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h3>概要</h3>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"><%= @recruit.body %></h4>
+              <div class="card-text"><%#= simple_format(@diary.impression) %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <% if @recruit.user == current_user %>
+      <div class="row mt-3">
+        <div class="col text-center">
+          <%= link_to '編集する', edit_recruit_path(@recruit), class: "btn btn-info" %>
+          <%= link_to '消去', recruit_path(@recruit), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%>
+        </div>
+      </div>
+       <% end %>
+      
+      
+      <div class="row mt-3">
+        <div class=col>
+          <div class="card">
+            <div class="card-header">
+              <h3>いいね <%= @recruit.favorites.count %>人</h3>
+            </div>
+            <div class="card-body">
+              <% @recruit.favorites.each do |favorite| %>
+              <div class="row my-1">
+                <div class=col>
+                  <%= link_to user_path(favorite.user) do %>
+                  <%= attachment_image_tag favorite.user, :profile_image, format: 'jpeg'  ,class:"img-fluid rounded-circle" ,fallback: "no_image.jpg",size: "60x60"%>
+                  <%= favorite.user.name%>
+                  <% end %>
+                </div>
+              </div>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class=col>
+          <div class="card">
+            <div class="card-header">
+              <h3>コメント <%= @recruit.recruit_comments.count %>件</h3>
+              </div>
+            <% @recruit.recruit_comments.each do |comment| %>
+              <div class="card-body p-2">
+                <div class="col-12">
+                  <%= link_to user_path(comment.user) do %>
+                  <%= attachment_image_tag comment.user, :profile_image, format: 'jpeg'  ,class:"img-fluid rounded-circle" ,fallback: "no_image.jpg"%>
+                  <%= comment.user.name %>
+                  <%end%>
+                  <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
+                </div>
+                <div class="col-10 border-primary"><%= simple_format(comment.comment) %></div>
+                <% if comment.user_id == current_user.id %>
+                <div class="col text-right">
+                  <%= link_to "削除", recruit_recruit_comments_path(comment.recruit, comment), method: :delete, class: "btn btn-danger pull-right btn-sm", data: {confirm: "本当にいいですか？"} %>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row p-0 mb-2">
+          <%= form_for [@recruit, @recruit_comment] do |f| %>
+          <div class="col-12 p-0">
+            <%= f.text_area :comment,cols:'110', rows:'5', class: "form-control mw-100",placeholder: "コメントをここに" %>
+            <%= f.submit "送信する", class: "btn btn-dark btn-sg btn-base-1 mt-20 pull-right" %>
+          </div>
+          <% end %>
+        </div>
+  
+    </div>
+  </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
-    <h3>概要</h3>
-    <p><%= @recruit.body %></p>
-    <h3>会場：場所</h3>
-    <p><%= @recruit.position %></p>
-    <h3>謝礼</h3>
-    <p><%= @recruit.reward %>　円</p>
-    <br>
-         <% if @recruit.user == current_user %>
-        <i><%= link_to '編集', edit_recruit_path(@recruit), class: "btn-sm btn-success edit_recruit_path_#{@recruit.id}" %></i>
-        <i><%= link_to '消去', recruit_path(@recruit), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_recuit_#{@recruit.id}"%></i>
-     <% end %>
-    <h3>コメント <%= @recruit.recruit_comments.count %>件</h3>
-    <%= render "recruits/recruit_comment", recruit: @recruit, recruit_comment: @recruit_comment %>
-  </div>
-</div>
+
+

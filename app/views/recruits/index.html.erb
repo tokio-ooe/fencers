@@ -1,10 +1,12 @@
+
 <div class="row">
   <%= render 'layouts/errors', obj: @recruit %>
-    <%= render'layouts/sidebar' %>
+  <%= render'layouts/sidebar' %>
+  <div class="container">
     <div class="text-center">
       <h2>募集一覧</h2>
-      <!--<%#= render 'index', recruits: @recruits %>-->
       <%= render'layouts/timeline', recruits: @recruits %>
     </div>
+  </div>
 </div>
 

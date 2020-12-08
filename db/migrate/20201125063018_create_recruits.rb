@@ -6,6 +6,8 @@ class CreateRecruits < ActiveRecord::Migration[5.2]
       t.text :position
       t.string :reward
       t.integer :user_id
+      t.date :date
+      t.text "setlist"
       t.timestamps
     end
   end

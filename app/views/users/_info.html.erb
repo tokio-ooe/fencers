@@ -1,24 +1,24 @@
+<div class='row justify-content-center'>
 <table class='table'>
-  <tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
-  <tr>
-	  <th>name</th>
+  <tr><%= attachment_image_tag user, :profile_image, format: 'jpeg'  ,class:"img-fluid" ,fallback: "no_image.jpg",size: "100x100" %></tr>
+	  <th>名前</th>
 	  <th><%= user.name %></th>
   </tr>
   <tr>
-	  <th>introduction</th>
+	  <th>紹介文</th>
 	  <th><%= user.introduction %></th>
   </tr>
   <tr>
     <th>所属</th>
-    <th><%= @user.belong %></th>
+    <th><%= user.belong %></th>
   </tr>
   <tr>
   <th>資格</th>
-  <th><%= @user.capacity_status %></th>
+  <th><%= user.capacity_status %></th>
   </tr>
 </table>
 
-<div class='row'>
+
   <%= link_to '編集する', edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
 </div>
 

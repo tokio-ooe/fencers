@@ -4,6 +4,11 @@ class Recruit < ApplicationRecord
 	 has_many :favorites, dependent: :destroy
 	 has_many :recruit_comments, dependent: :destroy
 	 has_many :notifications, dependent: :destroy
+  validates :date, presence:true
+  validates :title, presence:true
+  validates :body, presence:true
+  validates :reward, presence:true
+  validates :position, presence:true
 
   def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?

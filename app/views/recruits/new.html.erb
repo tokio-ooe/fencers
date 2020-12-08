@@ -6,19 +6,18 @@
         <h1 class="top-text">新規募集</h1>
       </div>
     </div>
-
     <div class="row justify-content-center my-3">
       <div class="col-6 border p-0" style="background-color:white;">
         <div class="write_header">
           <h2 class="p-3" style="color:white;">
-            新規募集</h2>
-          <h4 class="p-2" style="color:white;border-bottom:1px solid white;">あなたの思い出を入力しよう</h4>
+            <h2>新規募集</h2>
+          <h4 class="p-2" style="color:white;border-bottom:1px solid white;">a</h4>
         </div>
         <div class="write_body">
           <%= form_for @recruit,:url => {:action => :create} do |f| %>
           <div class="mt-2">
             <%= f.label :日付 %>
-            <!--<%#= f.date_field :date %>-->
+            <%= f.date_field :date %>
           </div>
           <div class="mt-2">
             <%= f.label :title %>
@@ -30,16 +29,12 @@
           </div>
           <div class="mt-2">
             <%= f.label :場所 %>
-            <%= f.text_field :body,　class: "hoge", size: 30 %>
+            <%= f.text_field :position,　class: "hoge", size: 30 %>
           </div>
           <div class="mt-2">
             <%= f.label :概要 %><br>
-            <%= f.text_area :reward,　class: "hoge", size: "50x10" %>
+            <%= f.text_area :body,　class: "hoge", size: "50x10" %>
           </div>
-          <!--<div class="tags mt-2">-->
-          <!--  <%#= f.label :tag_list,"タグ(カンマ区切りで入力)" %>-->
-          <!--  <%#= text_field_tag 'diary[tag_list]', @diary.tag_list.join(","), data: {role: "tagsinput"}, class: "form-control" %>-->
-          <!--</div>-->
           <div class="tags my-2 text-center">
             <%= f.submit "登録",class: "btn btn-dark" %>
           </div>

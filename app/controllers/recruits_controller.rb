@@ -59,7 +59,7 @@ class RecruitsController < ApplicationController
   private
 
   def recruit_params
-    params.require(:recruit).permit(:title, :body, :position, :reward,)
+    params.require(:recruit).permit(:title, :body, :position, :reward, :date )
   end
 
   def ensure_correct_user

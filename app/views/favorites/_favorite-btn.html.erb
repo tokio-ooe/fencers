@@ -1,5 +1,21 @@
+<!--<#% if recruit.favorited_by?(current_user) %>-->
+  <%#= link_to recruit.favorites.count, recruit_favorites_path(recruit), method: :delete, remote: true, class: "glyphicon glyphicon-heart" %>
+<!--<#% else %>-->
+  <%#= link_to recruit.favorites.count, recruit_favorites_path(recruit), method: :post, remote: true, class: "glyphicon glyphicon-heart-empty" %>
+<!--<#% end %>-->
+
+
 <% if recruit.favorited_by?(current_user) %>
-  <%= link_to recruit.favorites.count, recruit_favorites_path(recruit), method: :delete, remote: true, class: "glyphicon glyphicon-heart" %>
+<%= link_to recruit_favorites_path(recruit), method: :delete, remote: true do %>
+<p>
+  <i>応募</i>
+  <%= recruit.favorites.count %>
+  <% end %>
+</p>
 <% else %>
-  <%= link_to recruit.favorites.count, recruit_favorites_path(recruit), method: :post, remote: true, class: "glyphicon glyphicon-heart-empty" %>
+<p>
+  <%= link_to recruit_favorites_path(recruit), method: :post, remote: true do %>
+  <i>応募</i>
+  <%= recruit.favorites.count %><%end%>
+</p>
 <% end %>

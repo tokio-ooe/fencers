@@ -27,7 +27,7 @@
 					<p><%= recruit.position %></p>
 				</div>
 				<div class="col-2">
-					<p><i class="fas fa-map"></i></p>
+					<p><i class="fas fa-badge-dollar"></i></p>
 				</div>
 				<div class="col-10">
 					<p> <%= recruit.reward %>円</p>
@@ -47,7 +47,7 @@
 						</p>
 					</div>
 							<!-- いいね -->
-					<div id="favorite_buttons_<%#= diary.id %>" class="col">
+					<div id="favorite_buttons_<%= recruit.id %>" class="col">
           	<%= render"favorites/favorite-btn", recruit: recruit %>
           </div>
 				</div>

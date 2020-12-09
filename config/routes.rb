@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
 
   resources :recruits, only: [:index, :show, :edit, :create, :destroy, :update, :new] do
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
     resource :favorites, only: [:create, :destroy]
     resources :recruit_comments, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :edit, :update]
-     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+  resources :relationships, only: [:create, :destroy]
   resources :messages, only: [:create, :destroy]
   resources :notifications, only: [:index, :destroy]
 end

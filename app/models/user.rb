@@ -37,8 +37,8 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
-  # def relationshiped_by?(user)
-  #   relationships.where(user_id: user.id).exists?
-  # end
+  def relationshiped_by?(user)
+    relationships.where(user_id: user.id).exists?
+  end
 
 end

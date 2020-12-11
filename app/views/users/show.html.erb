@@ -10,7 +10,6 @@
 	<div class="row justify-content-center">
   <div class='col-7'>
 		<%= render'users/info' ,user:@user,recruits:@recruits %>
-		<%= link_to @user.followings.count, followings_path(@user) %>
 	</div>
 	</div>
 	  <% if @user.recruits.count == 0 %>

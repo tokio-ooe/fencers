@@ -16,10 +16,11 @@
   <body>
     <div class='wrap'>
       <div class='container-fluid'>
-        <p id="notice"><%#= notice %></p>
         <%= yield %>
       </div>
     </div>
-
+  <footer>
+  <%= render "layouts/footer" %>
+  </footer>
   </body>
 </html>

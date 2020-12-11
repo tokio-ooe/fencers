@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :recruit_comments, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :edit, :update]
-  resources :relationships, only: [:create, :destroy]
+  resource :relationships, only: [:create, :destroy]
   resources :messages, only: [:create, :destroy]
   resources :notifications, only: [:index, :destroy]
 end

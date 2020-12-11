@@ -1,4 +1,12 @@
-<table class='table'>
+<div class="row">
+	<%= render'layouts/sidebar' %>
+	<div class="col-10 background px-0">
+		<div class="text-center">
+			<div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+				<h1 class="top-text">follower</h1>
+			</div>
+		</div>
+<table class='table table table-dark'>
     <% users.each do |user| %>
       <tr>
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
@@ -10,4 +18,6 @@
     <% end %>
 
 </table>
+
+
 

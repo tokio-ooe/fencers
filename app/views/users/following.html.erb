@@ -1,25 +1,13 @@
-<div class="container">
+
+<% if @users.exists? %>
+  <%= render '/users/index', users: @users %>
+<% else %>
 	<div class="row">
-		<div class="col-xs-12">
-		  <h1>Follow Users</h1>
-		  <table class="table table-hover">
-		    <thead>
-		      <th>image</th>
-		      <th>name</th>
-		      <th></th>
-		      <th></th>
-		      <th></th>
-		    </thead>
-			<% @users.each do |users| %>
-		    <tbody>
-		      <td><%= attachment_image_tag users, :profile_image, :fill, 50, 50, fallback: "noimage.jpg" %></td>
-		      <td><%= users.name %></td>
-		      <td><%= "フォロー数：#{users.followings.count}" %></td>
-		      <td><%= "フォロー数：#{users.followers.count}" %></td>
-		      <td><%= link_to "Show", user_path(users) %></td>
-		    </tbody>
-			<% end %>
-		  </table>
+	<%= render'layouts/sidebar' %>
+	<div class="col-10 background px-0">
+		<div class="text-center">
+			<div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+				<h1 class="top-text">ユーザーはいません</h1>
+			</div>
 		</div>
-	</div>
-</div>
+<% end %>

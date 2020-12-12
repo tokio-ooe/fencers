@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
-
     @user = User.find(params[:id])
     @recruits = @user.recruits
   end
@@ -15,6 +14,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+  end
+  
+  def favorites
+    @user = User.find(params[:user_id])
+    # いいねしているツイートを呼び出す
+    @recruits = Recruit.joins(:favorites).where(user_id: @user.id)
   end
 
   def update

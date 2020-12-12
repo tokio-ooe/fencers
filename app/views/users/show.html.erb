@@ -9,15 +9,18 @@
 		<!-- プロフィールテンプレート -->
 	<div class="row justify-content-center">
   <div class='col-7'>
-		<%= render'users/info' ,user:@user,recruits:@recruits %>
+		<%= render'users/info' ,user: @user,users: @user,recruits: @recruits %>
+		<%#= render'layouts/profile',users: @users, user: @user, recruit: @recruit %>
 	</div>
 	</div>
 	  <% if @user.recruits.count == 0 %>
+	  <div class="row">
+  <%= render'layouts/sidebar' %>
 	    <div class="col-12 text-center bg-white">
 	    	<h2>投稿がありません</h2>
 	    </div>
 	  <%else%>
- 			<%= render'layouts/timeline',recruits:@recruits %>
+ 			<%= render'layouts/timeline',recruits: @recruits %>
 	  <%end%>
 	</div>
 </div>

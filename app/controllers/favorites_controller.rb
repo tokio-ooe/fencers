@@ -20,4 +20,7 @@ class FavoritesController < ApplicationController
     favorite.destroy
     redirect_to request.referer
   end
+  
+  def index
+  end
 end

@@ -1,6 +1,13 @@
-<h2>Follower Users</h2>
+
 <% if @users.exists? %>
   <%= render '/users/index', users: @users %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <div class="row">
+	<%= render'layouts/sidebar' %>
+	<div class="col-10 background px-0">
+		<div class="text-center">
+			<div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+				<h1 class="top-text">ユーザーはいません</h1>
+			</div>
+		</div>
 <% end %>

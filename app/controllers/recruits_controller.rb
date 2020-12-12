@@ -11,6 +11,10 @@ class RecruitsController < ApplicationController
 
   def index
     @recruits = Recruit.all
+      # if (params[:user_id])
+      #   User.where(@recruit.favorite)
+      # else
+      #   favorites.
     @recruit = Recruit.new
   end
   

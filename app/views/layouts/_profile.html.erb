@@ -7,7 +7,7 @@
 	      <%= attachment_image_tag recruit.user, :profile_image, format: 'jpeg'  ,class:"img-fluid rounded-circle" ,fallback: "no_image.jpg",size: "40x40" %>
 	      <%= users.name %><% end %>
 	    </div>
-<!-- ログインが自分か他人か -->
+			<!-- ログインが自分か他人か -->
 	     <% if users==current_user %>
 	      <div class="col-4 my-auto"><%= link_to "プロフィール編集", edit_user_path(users)%></div>
 	     <% else %>
@@ -28,9 +28,10 @@
 	    </div>
 	    <div class="col text-center">フォロー<br>
 	    	<%= link_to recruit_followings_path(@recruit) do %>
-	    	<%= user.followings.count %> <% end %></div>
+	    	<%= user.followings.count %> <% end %>
+	    </div>
 	    <div class="col text-center">参加履歴<br>
-	    	<%= link_to user_path(user) do %>
+	    	<%= link_to user_favorites_path(user) do %>
 	    	<%= user.favorites.count %> <% end %></div>
 	  </div>
 	</div>

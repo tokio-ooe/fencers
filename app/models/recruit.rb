@@ -1,9 +1,10 @@
 class Recruit < ApplicationRecord
 
   belongs_to :user
-	 has_many :favorites, dependent: :destroy
-	 has_many :recruit_comments, dependent: :destroy
-	 has_many :notifications, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :recruit_comments, dependent: :destroy
+	has_many :notifications, dependent: :destroy
+	
   validates :date, presence:true
   validates :title, presence:true
   validates :body, presence:true

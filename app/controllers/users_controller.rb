@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recruits = @user.recruits
+    @recruits = @user.recruits.page(params[:page]).per(10).reverse_order
   end
 
   def index

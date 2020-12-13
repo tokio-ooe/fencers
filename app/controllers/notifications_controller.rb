@@ -1,9 +1,9 @@
 class NotificationsController < ApplicationController
     
     def index
-        @notifications = current_user.passive_notifications
+        @notifications2 = Notification.where(visited_id: current_user.id).order('created_at')
         #通知画面を開くとcheckedをtrueにして通知確認済にする
-        @notifications.where(checked: false).each do |notification|
+        @notifications2.where(checked: false).each do |notification|
           notification.update_attributes(checked: true)
         end
     end

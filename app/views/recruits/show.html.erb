@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      
+      <br>
       <div class="row">
         <div class=col>
           <div class="card">
@@ -136,12 +136,12 @@
             </div>
           </div>
         </div>
-        
+        <br>
         <div class="row p-0 mb-2">
           <%= form_for [@recruit, @recruit_comment] do |f| %>
           <div class="col-12 p-0">
-            <%= f.text_area :comment,cols:'110', rows:'5', class: "form-control mw-100",placeholder: "コメントをここに" %>
-            <%= f.submit "送信する", class: "btn btn-dark btn-sg btn-base-1 mt-20 pull-right" %>
+            <%= f.text_area :comment,cols:'110', rows:'5', class: "form-control mw-100",placeholder: "コメントをここに" %><br>
+            <%= f.submit "送信する", class: "btn  btn-sg btn-base-1 mt-20 pull-left" %>
           </div>
           <% end %>
         </div>

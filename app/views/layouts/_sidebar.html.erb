@@ -13,9 +13,11 @@
         <li><%= link_to ' 募集一覧', recruits_path, class: 'glyphicon glyphicon-book books'%></li>
         <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
         <li class="notification"><%= link_to '通知', notifications_path, class:"btn"  %>
-          <% if unchecked_notifications.any? %>
-            <i class="fa fa-circle notification-circle">l</i>
-          <% end %>
+          
+        <% if unchecked_notifications.any? %>
+          <i class="fa fa-circle notification-circle"></i>
+        <% end %>
+          
       <% else %>
         <li><%= link_to ' Home', root_path, class: 'glyphicon glyphicon-home home' %></li>
         <li><%= link_to ' About', home_about_path, class: 'glyphicon glyphicon-link about' %></li>

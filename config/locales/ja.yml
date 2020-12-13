@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      recruit: Recruit
+    attributes:
+      recruit:
+        date: 日付
+        title: タイトル
+        body: 概要
+        reward: 報酬
+        position: 場所
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        encrypted_password": パスワード

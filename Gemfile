@@ -70,3 +70,5 @@ gem "refile-mini_magick"
 gem 'jp_prefecture'
 
 gem 'kaminari','~> 1.2.1'
+
+gem 'rails-i18n'

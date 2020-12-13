@@ -11,10 +11,7 @@ class RecruitsController < ApplicationController
 
   def index
     @recruits = Recruit.all
-      # if (params[:user_id])
-      #   User.where(@recruit.favorite)
-      # else
-      #   favorites.
+    @recruits = Recruit.page(params[:page]).per(10).reverse_order
     @recruit = Recruit.new
   end
   
@@ -26,10 +23,11 @@ class RecruitsController < ApplicationController
     @recruit = Recruit.new(recruit_params)
     @recruit.user_id = current_user.id
     if @recruit.save
-      redirect_to recruit_path(@recruit), notice: "You have created recruit successfully."
+      redirect_to recruit_path(@recruit)
+      flash[:notice] ="投稿しました"
     else
-      @recruits = Recruit.all
-      render 'index'
+      # @recruits = Recruit.all
+      render 'new'
     end
   end
 

@@ -12,6 +12,17 @@
           <h2 class="p-3" style="color:white;">
             新規募集</h2>
         </div>
+        
+    <% if @recruit.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% @recruit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+        
         <div class="write_body">
           <%= form_for @recruit,:url => {:action => :create} do |f| %>
           <div class="mt-2">

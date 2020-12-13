@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   
   def favorites
     @user = User.find(params[:user_id])
-    # いいねしているツイートを呼び出す
-    @recruits = Recruit.joins(:favorites).where(user_id: @user.id)
+    # userがいいねしている記事を呼び出す
+    @recruits = Recruit.joins(:favorites).where(favorites: {user_id: @user.id})
   end
 
   def update

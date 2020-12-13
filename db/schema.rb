@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_060124) do
     t.string "reward"
     t.integer "user_id"
     t.date "date"
+    t.text "setlist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

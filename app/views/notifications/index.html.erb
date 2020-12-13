@@ -1,0 +1,24 @@
+<div class="row">
+  <%= render'layouts/sidebar' %>
+  <div class="col-10 background px-0">
+    <div class="text-center">
+      <div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+        <h1 class="top-text">通知</h1>
+      </div>
+    </div>
+  <div class="row justify-content-center" >
+    <div class="col-6 my-3 p-1"style="border:solid 1px #DAA25A;;background-color:#FFFFF0;">
+      <div class="col-6 mt-1 mx-1">
+        <%= link_to "通知削除", notification_path(@notifications2), method: :delete ,class: "fas fa-trash" %>
+    </div>
+      <% if @notifications2.exists? %>
+      <div class="notification-index">
+        <%= render @notifications2 %>
+      </div>
+      <% else %>
+        <p>通知はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+

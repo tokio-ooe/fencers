@@ -1,0 +1,26 @@
+<%= form_with model:recruit,local:true do |f| %>
+  <div class="field row">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true, class:"form-control", id:"inputName", placeholder:""%>
+  </div>
+
+  <div class="field row">
+    <%= f.label :概要 %>
+    <%= f.text_field :body, autofocus: true, class:"form-control", id:"inputName", placeholder:""%>
+  </div>
+
+  <div class="field row">
+    <%= f.label :場所 %>
+    <%= f.text_field :position, autofocus: true, class:"form-control", id:"inputName", placeholder:""%>
+
+  </div>
+
+  <div class="field row">
+    <%= f.label :謝礼金 %>
+    <%= f.number_field :reward, autofocus: true, class:"form-control", id:"inputName", placeholder:"円"%>
+  </div>
+  <br>
+  <div class="actions row">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>

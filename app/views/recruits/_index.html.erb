@@ -1,0 +1,15 @@
+
+  <table class="table table-hover table-light">
+  <% recruits.each do |recruit| %>
+    <tbody>
+      <tr>
+        <td><%= link_to recruit.title, recruit_path(recruit), class: "recruit_#{recruit.id}" %></td>
+        <td><%#= recruit.body %></td>
+        <td>場所<%= recruit.position %></td>
+        <td>報酬 <%= recruit.reward %>円</td>
+        <!--<td>コメント数: <%#= recruit.recruit_comments.count %></td>-->
+        <td class="favorite-btn" id="favorite-btn_<%= recruit.id %>"><%= render "favorites/favorite-btn", recruit: recruit %></td>
+  <% end %>
+      </tr>
+    </tbody>
+  </table>

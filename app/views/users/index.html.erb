@@ -1,0 +1,17 @@
+<div class="row">
+  <%= render'layouts/sidebar' %>
+  <div class="col-10 background px-0">
+    <div class="text-center">
+      <div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+        <h1 class="top-text">Users</h1>
+      </div>
+    </div>
+<div class="row justify-content-center">
+  <div class='col-7'>
+    <h2>Users</h2>
+    <%= render 'layouts/profile', users: @users recruit: @recruit %>
+  </div>
+</div>
+</div>
+</div>
+

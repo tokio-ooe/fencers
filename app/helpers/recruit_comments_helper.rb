@@ -1,0 +1,2 @@
+module RecruitCommentsHelper
+end

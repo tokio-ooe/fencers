@@ -1,0 +1,39 @@
+<div class="row justify-content-center" >
+	<!-- user情報 -->
+	<div class="col-6 my-3 p-1"style="border:solid 1px #DAA25A;;background-color:#FFFFF0;">
+		<div class="row">
+	  	<div class="col-6 mt-1 mx-1">
+	     <%= link_to user_path(recruit.user) do %>
+	      <%= attachment_image_tag recruit.user, :profile_image, format: 'jpeg'  ,class:"img-fluid rounded-circle" ,fallback: "no_image.jpg",size: "40x40" %>
+	      <%= users.name %><% end %>
+	    </div>
+			<!-- ログインが自分か他人か -->
+	     <% if users==current_user %>
+	      <div class="col-4 my-auto"><%= link_to "プロフィール編集", edit_user_path(users)%></div>
+	     <% else %>
+	    <div class="col-4 my-auto" id="follow_buttons_<%= user.id %>">
+        <% if current_user.following?(user) %>
+          <%= link_to 'フォロー外す', relationships_path(user_id: user.id), method: :delete,class: "btn btn-outline-warning btn-sm"%>
+        <% else %>
+          <%= link_to 'フォローする', relationships_path(user_id: user.id), method: :post,class: "btn btn-outline-primary btn-sm" %>
+        <% end %>
+	   </div>
+	   		<% end %>
+	  </div>
+	  <div class="row my-3">
+	    <div class="col text-center">フォロワー<br>
+	    	<%= link_to recruit_followers_path(@recruit) do %>
+	    		<%= user.followers.count %> 
+	    	<% end %>
+	    </div>
+	    <div class="col text-center">フォロー<br>
+	    	<%= link_to recruit_followings_path(@recruit) do %>
+	    	<%= user.followings.count %> <% end %>
+	    </div>
+	    <div class="col text-center">参加履歴<br>
+	    	<%= link_to user_favorites_path(user) do %>
+	    	<%= user.favorites.count %> <% end %></div>
+	  </div>
+	</div>
+</div>
+

@@ -1,0 +1,14 @@
+
+<div class="row">
+  <%= render'layouts/sidebar' %>
+  <div class="col-10 background px-0">
+    <div class="text-center">
+      <div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+        <h1 class="top-text"><%= @user.name %>の参加履歴</h1>
+      </div>
+    </div>
+      <%= render'layouts/timeline', recruits: @recruits %>
+    </div>
+  </div>
+</div>
+

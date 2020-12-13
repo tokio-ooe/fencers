@@ -1,0 +1,27 @@
+<div class="row">
+	<%= render'layouts/sidebar' %>
+	<div class="col-10 background px-0">
+		<div class="text-center">
+			<div class="col border-bottom border-dark" style="background-color:rgba(0,0,0,0.5);">
+				<h1 class="top-text"><%= @user.name %>の投稿</h1>
+			</div>
+		</div>
+		<!-- プロフィールテンプレート -->
+	<div class="row justify-content-center">
+  <div class='col-7'>
+		<%= render'users/info' ,user: @user,users: @user,recruits: @recruits %>
+		<%#= render'layouts/profile',users: @users, user: @user, recruit: @recruit %>
+	</div>
+	</div>
+	  <% if @user.recruits.count == 0 %>
+	  <div class="row">
+	    <div class="col-12 text-center bg-white">
+	    	<h2>投稿がありません</h2>
+	    </div>
+	  <%else%>
+ 			<%= render'layouts/timeline',recruits: @recruits %>
+	  <%end%>
+	</div>
+</div>
+
+

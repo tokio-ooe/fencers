@@ -1,0 +1,33 @@
+<h2>User info</h2>
+
+<%= form_with model:@user do |f| %>
+  <%= render 'layouts/errors', obj: @user %>
+
+  <div class="field row">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :image %>
+    <%= f.attachment_field :profile_image %>
+  </div>
+
+  <div class="fiel row">
+    <%= f.label :プロフィール %>
+    <%= f.text_area :introduction, autofocus: true, class:"form-control", id:"inputName", placeholder:"" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :所属 %>
+    <%= f.text_field :belong, autofocus: true, class:"form-control", id:"inputName", placeholder:"" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :ライセンス, class:"col-sm-3" %>
+    <%= f.select :capacity_status, User.capacity_statuses.keys, :value => [] , class:"form control", id:"number", name:"number" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>
